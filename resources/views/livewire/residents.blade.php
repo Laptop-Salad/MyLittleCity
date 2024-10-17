@@ -1,5 +1,5 @@
 <div>
-    <x-city.header />
+    <x-city.header active="residents" />
 
     <div class="main-container">
         <table class="mt-4 table-default">

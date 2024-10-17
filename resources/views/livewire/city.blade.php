@@ -1,5 +1,5 @@
 <div>
-   <x-city.header />
+   <x-city.header active="overview" />
 
     <div class="main-container">
         <p class="mt-4">{{$this->city->description}}</p>

@@ -1,3 +1,5 @@
+@props(['active'])
+
 <header class="border-b pt-6 pb-4 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 shadow">
     <div class="max-w-7xl mx-auto">
         <h1>{{$this->city->name}}</h1>
@@ -11,7 +13,7 @@
                 <div class="hidden space-x-8 sm:-my-px  sm:flex">
                     <x-nav-link
                         :href="route('cities.city', $this->city)"
-                        :active="request()->routeIs('cities.city')"
+                        :active="$active === 'overview'"
                         wire:navigate
                     >
                         {{ __('Overview') }}
@@ -19,7 +21,7 @@
 
                     <x-nav-link
                         :href="route('cities.city.residents', $this->city)"
-                        :active="request()->routeIs('cities.city.residents')"
+                        :active="$active === 'residents'"
                         wire:navigate
                     >
                         {{ __('Residents') }}
