@@ -5,14 +5,15 @@
         <thead>
             <tr>
                 <td>{{__('Name')}}</td>
-                <td>{{__('Description')}}</td>
             </tr>
         </thead>
         <tbody>
             @forelse($this->cities as $city)
                 <tr>
-                    <td>{{$city->name}}</td>
-                    <td>{{$city->description}}</td>
+                    <td>
+                        <p class="cell-header">{{$city->name}}</p>
+                        <p class="text-sm text-muted">{{Str::words($city->description, 5)}}</p>
+                    </td>
                 </tr>
             @empty
                 <tr>
@@ -21,4 +22,8 @@
             @endforelse
         </tbody>
     </table>
+
+    <div class="mt-4">
+        {{$this->cities->links()}}
+    </div>
 </div>

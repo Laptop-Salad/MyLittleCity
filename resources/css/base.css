@@ -1,9 +1,16 @@
 @layer base {
+    body {
+        @apply text-black dark:text-white
+    }
+
     h1 { @apply text-2xl font-semibold }
 
     .main-container { @apply p-10 }
 
+    .text-muted { @apply text-gray-500 }
+
     .table-default tr { @apply border-slate-300 border-b hover:bg-gray-200 cursor-pointer }
     .table-default td { @apply p-2 }
+    .table-default .cell-header { @apply font-semibold }
     .table-default thead td { @apply font-semibold }
 }
