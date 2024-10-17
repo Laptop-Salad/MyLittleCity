@@ -20,7 +20,7 @@ class CityFactory extends Factory
         return [
             'name' => $this->faker->city(),
             'description' => $this->faker->text(),
-            'user_id' => User::factory()->create(),
+            'user_id' => User::factory(),
         ];
     }
 }
