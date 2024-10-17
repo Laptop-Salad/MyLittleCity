@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <td>{{__('Name')}}</td>
+                <td>{{__('Residents')}}</td>
             </tr>
         </thead>
         <tbody>
@@ -13,6 +14,10 @@
                     <td>
                         <p class="cell-header">{{$city->name}}</p>
                         <p class="text-sm text-muted">{{Str::words($city->description, 5)}}</p>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-person me-2"></i>
+                        {{$city->residents->count()}}
                     </td>
                 </tr>
             @empty
