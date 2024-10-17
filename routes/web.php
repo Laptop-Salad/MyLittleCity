@@ -16,6 +16,9 @@ Route::middleware('auth')->group(static function () {
 
     Route::get('cities/{city}', App\Livewire\City\Show::class)
         ->name('cities.city');
+
+    Route::get('cities/{city}/residents', App\Livewire\City\Residents::class)
+        ->name('cities.city.residents');
 });
 
 require __DIR__.'/auth.php';
