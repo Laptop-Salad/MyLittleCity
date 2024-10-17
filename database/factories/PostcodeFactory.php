@@ -23,7 +23,7 @@ class PostcodeFactory extends Factory
             'district' => Str::random(2),
             'sector' => Str::random(2),
             'unit' => Str::random(2),
-            'city' => City::factory(),
+            'city_id' => City::factory(),
         ];
     }
 }
