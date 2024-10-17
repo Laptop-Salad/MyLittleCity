@@ -10,9 +10,11 @@
         </thead>
         <tbody>
             @forelse($this->cities as $city)
-                <tr>
+                <tr class="link">
                     <td>
-                        <p class="cell-header">{{$city->name}}</p>
+                        <p class="cell-header">
+                            <a href="{{route('cities.city', $city)}}" class="link">{{$city->name}}</a>
+                        </p>
                         <p class="text-sm text-muted">{{Str::words($city->description, 5)}}</p>
                     </td>
                     <td>
