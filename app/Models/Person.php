@@ -10,4 +10,8 @@ class Person extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'middle_names' => 'array',
+    ];
 }
