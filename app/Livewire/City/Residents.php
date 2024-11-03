@@ -27,6 +27,6 @@ class Residents extends Component
 
     public function render()
     {
-        return view('livewire.residents');
+        return view('livewire.city.residents');
     }
 }

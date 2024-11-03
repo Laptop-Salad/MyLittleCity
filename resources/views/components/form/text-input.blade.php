@@ -1,10 +1,12 @@
 @props([
     'disabled' => false,
+    'type' => 'text'
 ])
 
 @php($model = $attributes->wire('model')?->value)
 
 <input
+    type="{{$type}}"
     id="{{$model}}"
     name="{{$model}}"
     @disabled($disabled)

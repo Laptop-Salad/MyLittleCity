@@ -29,6 +29,6 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.city');
+        return view('livewire.city.city');
     }
 }

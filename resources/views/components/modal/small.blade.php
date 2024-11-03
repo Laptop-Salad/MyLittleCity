@@ -1,7 +1,7 @@
 @props([
     'title',
-    'width' => 'w-[50%]',
-    'height' => 'h-[50vh]'
+    'width' => 'min-w-[50%]',
+    'height' => 'min=h-[50vh]'
 ])
 
 <!-- Main modal -->

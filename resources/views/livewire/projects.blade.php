@@ -1,4 +1,4 @@
-<div xmlns:x-slot="http://www.w3.org/1999/html">
+<div>
     <x-layout.header>
         <h1>{{__('Projects')}}</h1>
 

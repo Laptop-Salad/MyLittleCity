@@ -1,33 +1,37 @@
 @props(['active'])
 
-<header class="border-b pt-6 pb-4 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 shadow">
-    <div class="max-w-7xl mx-auto">
-        <h1>{{$this->city->name}}</h1>
-    </div>
-</header>
+<x-layout.header>
+    <h1>{{$this->city->name}}</h1>
 
-<nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <div class="hidden space-x-8 sm:-my-px  sm:flex">
-                    <x-nav-link
-                        :href="route('cities.city', $this->city)"
-                        :active="$active === 'overview'"
-                        wire:navigate
-                    >
-                        {{ __('Overview') }}
-                    </x-nav-link>
+    <x-slot:actions>
+        @isset($actions)
+            {{$actions}}
+        @endisset
+    </x-slot:actions>
 
-                    <x-nav-link
-                        :href="route('cities.city.residents', $this->city)"
-                        :active="$active === 'residents'"
-                        wire:navigate
-                    >
-                        {{ __('Residents') }}
-                    </x-nav-link>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+    <x-slot:tabs>
+        <x-nav-link
+            :href="route('cities.city', $this->city)"
+            :active="$active === 'overview'"
+            wire:navigate
+        >
+            {{ __('Overview') }}
+        </x-nav-link>
+
+        <x-nav-link
+            :href="route('cities.city.residents', $this->city)"
+            :active="$active === 'residents'"
+            wire:navigate
+        >
+            {{ __('Residents') }}
+        </x-nav-link>
+
+        <x-nav-link
+            :href="route('cities.city.buildings', $this->city)"
+            :active="$active === 'buildings'"
+            wire:navigate
+        >
+            {{ __('Buildings') }}
+        </x-nav-link>
+    </x-slot:tabs>
+</x-layout.header>
