@@ -3,7 +3,7 @@
         <x-slot:actions>
             <x-btn
                 class="text-sm"
-                wire:click="$set('show_create_person', true)"
+                wire:click="$set('show_create_family', true)"
             >
                 New Family
             </x-btn>
@@ -36,4 +36,19 @@
             {{$this->families->links()}}
         </div>
     </div>
+
+    <form wire:submit="saveFamily">
+        <x-modal.small title="Create Family" x-model="$wire.show_create_family">
+            <x-form.input-group for="family_form.name" label="Name">
+                <x-form.text-input
+                    wire:model="family_form.name"
+                    class="mt-1 block w-full"
+                />
+            </x-form.input-group>
+
+            <x-slot:footer>
+                <x-btn type="submit">{{ isset($this->family_form->family) ? 'Update' : 'Create' }}</x-btn>
+            </x-slot:footer>
+        </x-modal.small>
+    </form>
 </div>
