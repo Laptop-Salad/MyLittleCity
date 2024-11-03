@@ -26,42 +26,47 @@ class AllSeeder extends Seeder
         ]);
 
         foreach ($cities as $city) {
-            for ($x = 0; $x < random_int(0, 100); $x++) {
+            for ($y = 0; $y < rand(5, 100); $y++) {
                 $street = fake()->streetName;
                 $postcode = fake()->postcode;
 
-                // how many people are living at this address
-                $people_at_address = random_int(0, 5);
+                // how many buildings on this street
+                $buildings_on_street = random_int(3, 20);
 
-                // are they in the same family (0 - 4 (yes), 5 - 6 no)
-                $same_family = random_int(0, 6);
+                for ($x = 0; $x < $buildings_on_street; $x++) {
+                    // how many people are living at this address
+                    $people_at_address = random_int(0, 5);
 
-                $family = null;
+                    // are they in the same family (0 - 4 (yes), 5 - 6 no)
+                    $same_family = random_int(0, 6);
 
-                $building = Building::factory()->create([
-                    'city_id' => $city->id,
-                ]);
+                    $family = null;
 
-                if ($same_family >= 0 && $same_family < 4) {
-                    $family = Family::factory()->create();
-                }
+                    $building = Building::factory()->create([
+                        'city_id' => $city->id,
+                    ]);
 
-                for ($pa = 0; $pa < $people_at_address; $pa++) {
-                    if (!$family) {
-                        $person = Person::factory()->create([
-                            'family_id' => Family::factory()->create()->id,
-                        ]);
-                    } else {
-                        $person = Person::factory()->create([
-                            'family_id' => $family->id,
-                        ]);
+                    if ($same_family >= 0 && $same_family < 4) {
+                        $family = Family::factory()->create();
                     }
 
-                    PersonAddress::create([
-                        'person_id' => $person->id,
-                        'addressable_id' => $building->id,
-                        'addressable_type' => Building::class,
-                    ]);
+                    for ($pa = 0; $pa < $people_at_address; $pa++) {
+                        if (!$family) {
+                            $person = Person::factory()->create([
+                                'family_id' => Family::factory()->create()->id,
+                            ]);
+                        } else {
+                            $person = Person::factory()->create([
+                                'family_id' => $family->id,
+                            ]);
+                        }
+
+                        PersonAddress::create([
+                            'person_id' => $person->id,
+                            'addressable_id' => $building->id,
+                            'addressable_type' => Building::class,
+                        ]);
+                    }
                 }
             }
         }
