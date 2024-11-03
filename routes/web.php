@@ -17,6 +17,9 @@ Route::middleware('auth')->group(static function () {
     Route::get('projects/{project}', \App\Livewire\Project\Show::class)
         ->name('projects.project');
 
+    Route::get('projects/{project}/people', \App\Livewire\People\People::class)
+        ->name('projects.project.people');
+
     Route::get('cities/{city}', App\Livewire\City\Show::class)
         ->name('cities.city');
 

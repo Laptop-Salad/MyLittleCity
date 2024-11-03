@@ -1,5 +1,5 @@
 <div xmlns:x-slot="http://www.w3.org/1999/html">
-    <x-layout.heading>
+    <x-layout.header>
         <h1>{{__('Projects')}}</h1>
 
         <x-slot:actions>
@@ -10,7 +10,7 @@
                 New Project
             </x-btn>
         </x-slot:actions>
-    </x-layout.heading>
+    </x-layout.header>
 
     <div class="main-container">
         <table class="mt-4 table-default">

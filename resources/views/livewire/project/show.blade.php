@@ -1,7 +1,5 @@
 <div>
-    <x-layout.heading>
-        <h1>{{__('Cities')}}</h1>
-
+    <x-project.header active="cities">
         <x-slot:actions>
             <x-btn
                 class="text-sm"
@@ -10,7 +8,7 @@
                 New City
             </x-btn>
         </x-slot:actions>
-    </x-layout.heading>
+    </x-project.header>
 
     <div class="main-container">
         <table class="mt-4 table-default">

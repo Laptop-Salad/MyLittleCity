@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Person extends Model
 {
@@ -22,7 +21,7 @@ class Person extends Model
         return $this->belongsTo(Family::class);
     }
 
-    public function name($include_first = true, $include_middle = true, $include_last = true): string {
+    public function getName($include_first = true, $include_middle = true, $include_last = true): string {
         $name = "";
 
         if ($include_first) {
@@ -34,7 +33,7 @@ class Person extends Model
         }
 
         if ($include_last) {
-            $name .= " " . $this->last_name;
+            $name .= " " . $this->family->name;
         }
 
         return $name;
