@@ -39,7 +39,7 @@ class Person extends Model
         return $name;
     }
 
-    public function address(): HasMany {
+    public function personAddresses(): HasMany {
         return $this->hasMany(PersonAddress::class);
     }
 }

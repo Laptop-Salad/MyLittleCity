@@ -33,6 +33,7 @@ class People extends Component
             ->whereHas('family', function (Builder $query) {
                 $query->orderBy('name');
             })
+            ->withCount('personAddresses')
             ->paginate();
     }
 

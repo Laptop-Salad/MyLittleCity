@@ -28,7 +28,11 @@
                         <p class="cell-header">{{$person->getName()}}</p>
                     </td>
                     <td>
-                        No residency
+                        {{
+                            $person->person_addresses_count === 0
+                            ? 'No registered addresses'
+                            : $person->person_addresses_count . ' registered addresses'
+                        }}
                     </td>
                     <td class="w-32">
                         <x-dropdown-group label="Manage">
