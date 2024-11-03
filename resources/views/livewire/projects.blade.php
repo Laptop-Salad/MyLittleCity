@@ -25,7 +25,13 @@
                 <tr class="link">
                     <td>
                         <p class="cell-header">
-                            <a href="{{route('projects.project', $project)}}" class="link">{{$project->name}}</a>
+                            <a
+                                wire:navigate.hover
+                                href="{{route('projects.project', $project)}}"
+                                class="link"
+                            >
+                                {{$project->name}}
+                            </a>
                         </p>
                     </td>
                     <td>
