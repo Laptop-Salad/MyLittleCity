@@ -20,6 +20,9 @@ Route::middleware('auth')->group(static function () {
     Route::get('projects/{project}/people', \App\Livewire\People\People::class)
         ->name('projects.project.people');
 
+    Route::get('projects/{project}/families', \App\Livewire\Family\Families::class)
+        ->name('projects.project.families');
+
     Route::get('cities/{city}', App\Livewire\City\Show::class)
         ->name('cities.city');
 

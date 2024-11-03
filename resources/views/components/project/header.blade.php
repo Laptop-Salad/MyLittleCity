@@ -25,5 +25,13 @@
         >
             {{ __('People') }}
         </x-nav-link>
+
+        <x-nav-link
+            :href="route('projects.project.families', $this->project)"
+            :active="$active === 'families'"
+            wire:navigate
+        >
+            {{ __('Families') }}
+        </x-nav-link>
     </x-slot:tabs>
 </x-layout.header>
