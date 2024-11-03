@@ -11,7 +11,7 @@ Route::middleware('auth')->group(static function () {
     Route::view('profile', 'profile')
         ->name('profile');
 
-    Route::get('projects', \App\Livewire\Projects::class)
+    Route::get('projects', \App\Livewire\Project\Projects::class)
         ->name('projects');
 
     Route::get('projects/{project}', \App\Livewire\Project\Show::class)
