@@ -51,9 +51,9 @@ new class extends Component
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-form.input-label for="password" value="{{ __('Password') }}" class="sr-only" />
 
-                <x-text-input
+                <x-form.text-input
                     wire:model="password"
                     id="password"
                     name="password"
@@ -62,7 +62,7 @@ new class extends Component
                     placeholder="{{ __('Password') }}"
                 />
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-form.input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
             <div class="mt-6 flex justify-end">

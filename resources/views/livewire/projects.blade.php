@@ -1,35 +1,71 @@
-<div class="main-container">
-    <h1>{{__('Projects')}}</h1>
+<div>
+    <x-layout.heading>
+        <h1>{{__('Projects')}}</h1>
 
-    <table class="mt-4 table-default">
-        <thead>
-        <tr>
-            <td>{{__('Name')}}</td>
-            <td>{{__('Cities')}}</td>
-        </tr>
-        </thead>
-        <tbody>
-        @forelse($this->projects as $project)
-            <tr class="link">
-                <td>
-                    <p class="cell-header">
-                        <a href="{{route('projects.project', $project)}}" class="link">{{$project->name}}</a>
-                    </p>
-                </td>
-                <td>
-                    <i class="fa-solid fa-city me-2"></i>
-                    {{$project->cities->count()}}
-                </td>
-            </tr>
-        @empty
+        <x-slot:actions>
+            <x-btn
+                class="text-sm"
+                wire:click="toggleShowCreateProject">
+                New Project
+            </x-btn>
+        </x-slot:actions>
+    </x-layout.heading>
+
+    <div class="main-container">
+        <table class="mt-4 table-default">
+            <thead>
             <tr>
-                <td colspan="2">{{__('No projects')}}...</td>
+                <td class="w-64">{{__('Name')}}</td>
+                <td class="w-32">{{__('Cities')}}</td>
             </tr>
-        @endforelse
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @forelse($this->projects as $project)
+                <tr class="link">
+                    <td>
+                        <p class="cell-header">
+                            <a href="{{route('projects.project', $project)}}" class="link">{{$project->name}}</a>
+                        </p>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-city me-2"></i>
+                        {{$project->cities->count()}}
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="2">{{__('No projects')}}...</td>
+                </tr>
+            @endforelse
+            </tbody>
+        </table>
 
-    <div class="mt-4">
-        {{$this->projects->links()}}
+        <div class="mt-4">
+            {{$this->projects->links()}}
+        </div>
     </div>
+
+    <x-modal.small title="Create Project" x-model="$wire.show_create_project">
+        <form wire:submit="saveProject">
+            <x-modal.body>
+                <x-form.input-group for="project_form.name" label="Name">
+                    <x-form.text-input
+                        wire:model="project_form.name"
+                        class="mt-1 block w-full"
+                    />
+                </x-form.input-group>
+
+                <x-form.input-group for="project_form.description" label="Description">
+                    <x-form.text-input
+                        wire:model="project_form.description"
+                        class="mt-1 block w-full"
+                    />
+                </x-form.input-group>
+            </x-modal.body>
+
+            <x-modal.footer>
+                <x-btn type="submit">{{ isset($this->project_form->project) ? 'Update' : 'Create' }}</x-btn>
+            </x-modal.footer>
+        </form>
+    </x-modal.small>
 </div>
