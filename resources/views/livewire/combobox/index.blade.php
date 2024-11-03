@@ -23,7 +23,7 @@
                     @endif
                 </div>
             @endforeach
-            @if (!$search || $results->isEmpty())
+            @if ($search && $results->isEmpty())
                 <p class="py-6 text-center text-sm">{{ __('No results found') }}</p>
             @endif
         </x-popover.content>
