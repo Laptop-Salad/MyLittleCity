@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Family;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class PersonFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'middle_names' => $this->getMiddleNames(),
             'family_id' => Family::factory(),
+            'project_id' => Project::factory(),
         ];
     }
 

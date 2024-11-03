@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +16,8 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->foreignIdFor(\App\Models\User::class);
+            $table->foreignIdFor(Project::class);
+            $table->foreignIdFor(User::class);
             $table->timestamps();
         });
     }

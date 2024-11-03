@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Family;
+use App\Models\Project;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->json('middle_names')->default(new Expression('(JSON_ARRAY())'));
             $table->foreignIdFor(Family::class);
+            $table->foreignIdFor(Project::class);
             $table->timestamps();
         });
     }

@@ -19,8 +19,8 @@ class Residents extends Component
     #[Computed]
     public function residents() {
         return $this->city->residents()
-            ->whereHas('person', function (Builder $query) {
-                $query->orderBy('first_name');
+            ->whereHas('family', function (Builder $query) {
+                $query->orderBy('name');
             })
             ->paginate();
     }

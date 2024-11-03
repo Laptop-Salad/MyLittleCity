@@ -24,7 +24,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="2">No cities..</td>
+                    <td colspan="2">{{__('No cities')}}..</td>
                 </tr>
             @endforelse
         </tbody>

@@ -18,8 +18,7 @@ class BuildingFactory extends Factory
     public function definition(): array
     {
         return [
-            'number' => random_int(1, 100),
-            'street_id' => Street::factory(),
+            'type' => 1,
         ];
     }
 }
