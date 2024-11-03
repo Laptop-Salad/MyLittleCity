@@ -15,10 +15,6 @@ class Projects extends Component
 
     public $show_create_project = false;
 
-    public function toggleShowCreateProject() {
-        $this->show_create_project = true;
-    }
-
     public function saveProject() {
         $this->project_form->save();
         $this->project_form->reset();

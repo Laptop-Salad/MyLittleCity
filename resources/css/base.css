@@ -5,10 +5,11 @@
 
     h1 { @apply text-2xl font-semibold }
 
-    .main-container { @apply p-10 }
+    .main-container { @apply p-10 container }
 
     .text-muted { @apply text-gray-500 }
 
+    .table-default { @apply table-fixed w-full }
     .table-default tr { @apply border-slate-300 border-b }
     .table-default tr.link  { @apply hover:bg-gray-200 cursor-pointer relative }
     .table-default a.link  { @apply after:absolute after:inset-0 }

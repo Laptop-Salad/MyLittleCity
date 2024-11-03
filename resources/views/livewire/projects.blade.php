@@ -1,11 +1,12 @@
-<div>
+<div xmlns:x-slot="http://www.w3.org/1999/html">
     <x-layout.heading>
         <h1>{{__('Projects')}}</h1>
 
         <x-slot:actions>
             <x-btn
                 class="text-sm"
-                wire:click="toggleShowCreateProject">
+                wire:click="$set('show_create_project', true)"
+            >
                 New Project
             </x-btn>
         </x-slot:actions>
@@ -15,8 +16,8 @@
         <table class="mt-4 table-default">
             <thead>
             <tr>
-                <td class="w-64">{{__('Name')}}</td>
-                <td class="w-32">{{__('Cities')}}</td>
+                <td>{{__('Name')}}</td>
+                <td>{{__('Cities')}}</td>
             </tr>
             </thead>
             <tbody>
@@ -45,27 +46,25 @@
         </div>
     </div>
 
-    <x-modal.small title="Create Project" x-model="$wire.show_create_project">
-        <form wire:submit="saveProject">
-            <x-modal.body>
-                <x-form.input-group for="project_form.name" label="Name">
-                    <x-form.text-input
-                        wire:model="project_form.name"
-                        class="mt-1 block w-full"
-                    />
-                </x-form.input-group>
+    <form wire:submit="saveProject">
+        <x-modal.small title="Create Project" x-model="$wire.show_create_project">
+            <x-form.input-group for="project_form.name" label="Name">
+                <x-form.text-input
+                    wire:model="project_form.name"
+                    class="mt-1 block w-full"
+                />
+            </x-form.input-group>
 
-                <x-form.input-group for="project_form.description" label="Description">
-                    <x-form.text-input
-                        wire:model="project_form.description"
-                        class="mt-1 block w-full"
-                    />
-                </x-form.input-group>
-            </x-modal.body>
+            <x-form.input-group for="project_form.description" label="Description">
+                <x-form.text-input
+                    wire:model="project_form.description"
+                    class="mt-1 block w-full"
+                />
+            </x-form.input-group>
 
-            <x-modal.footer>
+            <x-slot:footer>
                 <x-btn type="submit">{{ isset($this->project_form->project) ? 'Update' : 'Create' }}</x-btn>
-            </x-modal.footer>
-        </form>
-    </x-modal.small>
+            </x-slot:footer>
+        </x-modal.small>
+    </form>
 </div>
