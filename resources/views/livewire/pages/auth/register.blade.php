@@ -14,6 +14,7 @@ new #[Layout('layouts.guest')] class extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public string $team_name = '';
 
     /**
      * Handle an incoming registration request.
@@ -32,12 +33,23 @@ new #[Layout('layouts.guest')] class extends Component
 
         Auth::login($user);
 
+        // create tenant
+        $tenant = \App\Models\Tenant::create([
+            'name' => $this->team_name
+        ]);
+
+        // attach was having a seizure
+        \App\Models\TenantUser::create([
+            'user_id' => $user->id,
+            'tenant_id' => $tenant->id
+        ]);
+
         $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
 }; ?>
 
 <div>
-    <form wire:submit="register">
+    <form wire:submit="register" class="space-y-4">
         <!-- Name -->
         <div>
             <x-form.input-label for="name" :value="__('Name')" />
@@ -46,14 +58,14 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
+        <div>
             <x-form.input-label for="email" :value="__('Email')" />
             <x-form.text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
             <x-form.input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div>
             <x-form.input-label for="password" :value="__('Password')" />
 
             <x-form.text-input wire:model="password" id="password" class="block mt-1 w-full"
@@ -65,7 +77,7 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div>
             <x-form.input-label for="password_confirmation" :value="__('Confirm Password')" />
 
             <x-form.text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
@@ -74,6 +86,11 @@ new #[Layout('layouts.guest')] class extends Component
 
             <x-form.input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+
+        <x-form.input-group label="Team" for="team_name">
+            <x-slot:help>If you are trying to join an existing team go to that teams subdomain.</x-slot:help>
+            <x-form.text-input wire:model="team_name" required />
+        </x-form.input-group>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>
