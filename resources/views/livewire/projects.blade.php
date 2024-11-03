@@ -3,12 +3,12 @@
         <h1>{{__('Projects')}}</h1>
 
         <x-slot:actions>
-            <x-btn
+            <x-layout.action
                 class="text-sm"
                 wire:click="$set('show_create_project', true)"
             >
                 New Project
-            </x-btn>
+            </x-layout.action>
         </x-slot:actions>
     </x-layout.header>
 

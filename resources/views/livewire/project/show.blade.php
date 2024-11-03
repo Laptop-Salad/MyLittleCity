@@ -1,12 +1,12 @@
 <div>
     <x-project.header active="cities">
         <x-slot:actions>
-            <x-btn
+            <x-layout.action
                 class="text-sm"
                 wire:click="$set('show_create_city', true)"
             >
                 New City
-            </x-btn>
+            </x-layout.action>
         </x-slot:actions>
     </x-project.header>
 

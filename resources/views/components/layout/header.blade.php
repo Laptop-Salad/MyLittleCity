@@ -1,10 +1,10 @@
 <header class="border-b bg-white dark:bg-gray-800 shadow">
-    <div class="max-h-max max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-h-max max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between">
-           <div>
+           <div class="py-6">
                {{ $slot }}
            </div>
-            <div>
+            <div class="flex space-x-2 items-end">
                 @isset($actions)
                     {{$actions}}
                 @endisset
