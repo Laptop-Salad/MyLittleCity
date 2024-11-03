@@ -43,7 +43,7 @@ class Combobox extends Component
         $query = $this->model::query();
 
         foreach ($this->searchable as $search) {
-            $query->where($search, 'like', "%$value%");
+            $query->where($search, 'like', "%$value%", 'or');
         }
 
         $this->results = $query->limit($this->limit)->get();

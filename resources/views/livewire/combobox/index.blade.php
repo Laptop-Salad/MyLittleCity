@@ -1,16 +1,16 @@
 <div>
     <x-popover wire:model="show">
-        <x-popover.trigger>
-            <div class="flex items-center border-b px-3">
+        <x-popover.trigger class="w-full">
+            <div class="w-full flex items-center border-b px-3">
                 <i class="fa-solid fa-magnifying-glass me-2"></i>
                 <x-input
                     wire:model.live="search"
                     :placeholder="$selected ? $selected->{$display} : $placeholder"
-                    class="py-3 px-0 outline-none border-none focus-visible:ring-0"
+                    class="mt-1 block w-full py-3 px-0 outline-none border-none focus-visible:ring-0"
                 />
             </div>
         </x-popover.trigger>
-        <x-popover.content class="bg-white w-[200px] p-0 min-h-20">
+        <x-popover.content class="bg-white w-full mx-3 min-h-20">
             @foreach ($results as $result)
                 <div
                     wire:click="select('{{ $result->id }}')"

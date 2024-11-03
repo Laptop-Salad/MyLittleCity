@@ -12,7 +12,7 @@
             <tbody>
             @forelse($this->residents as $resident)
                 <tr>
-                    <td>{{$resident->name(true, true, false)}}</td>
+                    <td>{{$resident->getName(true, true, false)}}</td>
                     <td>{{$resident->family->name}}</td>
                 </tr>
             @empty
