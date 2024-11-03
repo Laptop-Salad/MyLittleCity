@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Livewire\City;
+namespace App\Livewire;
 
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Cities extends Component
+class Projects extends Component
 {
     use WithPagination;
 
     #[Computed]
-    public function cities() {
+    public function projects() {
         return auth()->user()
-            ->cities()
+            ->projects()
             ->orderBy('name')
             ->paginate();
     }
 
     public function render()
     {
-        return view('livewire.cities');
+        return view('livewire.projects');
     }
 }

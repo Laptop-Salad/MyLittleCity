@@ -11,8 +11,11 @@ Route::middleware('auth')->group(static function () {
     Route::view('profile', 'profile')
         ->name('profile');
 
-    Route::get('cities', App\Livewire\City\Cities::class)
-        ->name('cities');
+    Route::get('projects', \App\Livewire\Projects::class)
+        ->name('projects');
+
+    Route::get('projects/{project}', \App\Livewire\Project\Show::class)
+        ->name('projects.project');
 
     Route::get('cities/{city}', App\Livewire\City\Show::class)
         ->name('cities.city');
