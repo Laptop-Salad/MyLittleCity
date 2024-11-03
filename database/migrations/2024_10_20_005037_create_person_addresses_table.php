@@ -16,9 +16,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Person::class);
             $table->foreignIdFor(City::class);
-            $table->integer('number');
-            $table->string('street');
-            $table->string('postcode');
             $table->morphs('addressable');
             $table->timestamps();
         });

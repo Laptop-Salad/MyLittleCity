@@ -38,14 +38,9 @@ class AllSeeder extends Seeder
 
                 $family = null;
 
-                $address = [
-                    'number' => fake()->buildingNumber(),
-                    'street' => fake()->streetName(),
-                    'postcode' => fake()->postcode(),
-                    'addressable_id' => Building::factory()->create()->id,
-                    'addressable_type' => Building::class,
+                $building = Building::factory()->create([
                     'city_id' => $city->id,
-                ];
+                ]);
 
                 if ($same_family >= 0 && $same_family < 4) {
                     $family = Family::factory()->create();
@@ -64,12 +59,8 @@ class AllSeeder extends Seeder
 
                     PersonAddress::create([
                         'person_id' => $person->id,
-                        'number' => $address['number'],
-                        'street' => $address['street'],
-                        'postcode' => $address['postcode'],
-                        'addressable_id' => $address['addressable_id'],
-                        'addressable_type' => $address['addressable_type'],
-                        'city_id' => $address['city_id'],
+                        'addressable_id' => $building->id,
+                        'addressable_type' => Building::class,
                     ]);
                 }
             }

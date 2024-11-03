@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Building;
+use App\Models\City;
 use App\Models\Street;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +21,10 @@ class BuildingFactory extends Factory
     {
         return [
             'type' => 1,
+            'number' => fake()->buildingNumber(),
+            'street' => fake()->streetName(),
+            'postcode' => fake()->postcode(),
+            'city_id' => City::factory(),
         ];
     }
 }

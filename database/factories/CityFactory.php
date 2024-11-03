@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,7 @@ class CityFactory extends Factory
         return [
             'name' => $this->faker->city(),
             'user_id' => User::factory(),
+            'project_id' => Project::factory(),
         ];
     }
 }
