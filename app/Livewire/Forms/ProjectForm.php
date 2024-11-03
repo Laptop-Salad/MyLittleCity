@@ -18,6 +18,8 @@ class ProjectForm extends Form
 
     public function save()
     {
+        $this->validate();
+
         if (!isset($this->project)) {
             $this->project = new Project();
         }
