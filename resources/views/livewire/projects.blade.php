@@ -1,5 +1,5 @@
 <div class="main-container">
-    <h1>{{__('Cities')}}</h1>
+    <h1>{{__('Projects')}}</h1>
 
     <table class="mt-4 table-default">
         <thead>
