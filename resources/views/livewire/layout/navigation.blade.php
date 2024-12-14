@@ -68,6 +68,14 @@ new class extends Component
                         </button>
                     </x-slot>
                 </x-dropdown>
+
+                <x-dropdown-group label="Team">
+                    @foreach(auth()->user()->tenants as $tenant)
+                        <x-dropdown-group.button>
+                            {{$tenant->name}}
+                        </x-dropdown-group.button>
+                    @endforeach
+                </x-dropdown-group>
             </div>
 
             <!-- Hamburger -->

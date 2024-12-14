@@ -10,6 +10,6 @@ class Tenant extends Model
     protected $guarded = ['id'];
 
     public function users(): BelongsToMany {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'tenant_users');
     }
 }
