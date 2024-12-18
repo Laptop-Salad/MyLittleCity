@@ -8,7 +8,7 @@ use Livewire\Form;
 
 class ProjectForm extends Form
 {
-    public Project $project;
+    public ?Project $project;
 
     #[Validate(['required', 'string', 'max:255'])]
     public $name;
