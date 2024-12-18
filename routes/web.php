@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+require __DIR__.'/auth.php';
+
 Route::view('/', 'welcome');
 
 Route::middleware('auth')->group(static function () {
@@ -32,5 +34,3 @@ Route::middleware('auth')->group(static function () {
     Route::get('cities/{city}/residents', App\Livewire\City\Residents::class)
         ->name('cities.city.residents');
 });
-
-require __DIR__.'/auth.php';
