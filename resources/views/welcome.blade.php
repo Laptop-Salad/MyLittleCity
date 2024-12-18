@@ -18,8 +18,8 @@
             <h1 class="text-4xl">My Little City</h1>
 
             <div class="space-x-2">
-                <x-btn class="text-lg" :href="route('register')">Login</x-btn>
-                <x-btn class="text-lg" :href="route('login')">Register</x-btn>
+                <x-btn class="text-lg" :href="route('login')">Login</x-btn>
+                <x-btn class="text-lg" :href="route('register')">Register</x-btn>
             </div>
         </main>
     </body>
