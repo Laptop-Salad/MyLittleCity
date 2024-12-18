@@ -3,12 +3,12 @@
 <div>
     <x-project.header active="people">
         <x-slot:actions>
-            <x-btn
+            <x-layout.action
                 class="text-sm"
                 wire:click="$set('show_create_person', true)"
             >
                 New Person
-            </x-btn>
+            </x-layout.action>
         </x-slot:actions>
     </x-project.header>
 

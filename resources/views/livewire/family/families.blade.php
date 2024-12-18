@@ -1,12 +1,12 @@
 <div>
     <x-project.header active="families">
         <x-slot:actions>
-            <x-btn
+            <x-layout.action
                 class="text-sm"
                 wire:click="$set('show_create_family', true)"
             >
                 New Family
-            </x-btn>
+            </x-layout.action>
         </x-slot:actions>
     </x-project.header>
 
