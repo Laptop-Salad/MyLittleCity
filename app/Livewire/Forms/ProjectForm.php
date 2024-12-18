@@ -16,20 +16,28 @@ class ProjectForm extends Form
     #[Validate(['required', 'string', 'max:255'])]
     public $description;
 
+    public function set(Project $project) {
+        $this->project = $project;
+
+        $this->fill($project->toArray());
+    }
+
     public function save()
     {
         $this->validate();
 
-        if (!isset($this->project)) {
-            $this->project = new Project();
+        if (isset($this->project)) {
+            $project = $this->project;
+        } else {
+            $project = new Project();
         }
 
-        $this->project->fill([
+        $project->fill([
             'name' => $this->name,
             'description' => $this->description,
             'user_id' => auth()->id()
         ]);
 
-        $this->project->save();
+        $project->save();
     }
 }

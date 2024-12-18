@@ -13,39 +13,55 @@
     </x-layout.header>
 
     <div class="main-container">
-        <table class="mt-4 table-default">
-            <thead>
-            <tr>
-                <td>{{__('Name')}}</td>
-                <td>{{__('Cities')}}</td>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="grid md:grid-cols-4 gap-4">
             @forelse($this->projects as $project)
-                <tr class="link">
-                    <td>
-                        <p class="cell-header">
+                <div class="simple-card shadow-md">
+                    <div class="flex justify-between separator pb-2">
+                        <h2 class="hover:text-indigo-500">
                             <a
                                 wire:navigate.hover
                                 href="{{route('projects.project', $project)}}"
-                                class="link"
+                                class="font-semibold border-b border-indigo-400"
                             >
                                 {{$project->name}}
                             </a>
+                        </h2>
+
+                        <x-popover>
+                            <x-popover.trigger class="w-full relative">
+                                <x-btn>
+                                    <i class="fa-solid fa-ellipsis fa-lg"></i>
+                                    <span class="sr-only">Menu/Options</span>
+                                </x-btn>
+                            </x-popover.trigger>
+                            <x-popover.content class="bg-white mx-3 min-h-20">
+                                <x-btn wire:click="edit({{$project->id}})">Edit</x-btn>
+                            </x-popover.content>
+                        </x-popover>
+                    </div>
+
+                    <div class="mt-6 space-y-4">
+                        <p>
+                            <i class="fa-solid fa-city me-2"></i>
+                            Cities:
+                            {{$project->cities->count()}}
                         </p>
-                    </td>
-                    <td>
-                        <i class="fa-solid fa-city me-2"></i>
-                        {{$project->cities->count()}}
-                    </td>
-                </tr>
+                        <p>
+                            <i class="fa-solid fa-buildings me-2"></i>
+                            Buildings:
+                            {{$project->buildings->count()}}
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-people-pants me-2"></i>
+                            People:
+                            {{$project->people->count()}}
+                        </p>
+                    </div>
+                </div>
             @empty
-                <tr>
-                    <td colspan="2">{{__('No projects')}}...</td>
-                </tr>
+                <p>{{__('No projects')}}...</p>
             @endforelse
-            </tbody>
-        </table>
+        </div>
 
         <div class="mt-4">
             {{$this->projects->links()}}
@@ -53,7 +69,10 @@
     </div>
 
     <form wire:submit="saveProject">
-        <x-modal.small title="Create Project" x-model="$wire.show_create_project">
+        <x-modal.small
+            title="{{ isset($this->project_form->project) ? 'Edit' : 'Create' }} Project "
+            x-model="$wire.show_create_project"
+        >
             <x-form.input-group for="project_form.name" label="Name">
                 <x-form.text-input
                     wire:model="project_form.name"

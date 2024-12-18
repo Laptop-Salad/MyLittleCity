@@ -11,4 +11,6 @@
         hover:bg-gray-700 dark:hover:bg-white
         focus:bg-gray-700 dark:focus:bg-white
     }
+
+    .separator { @apply border-b-2 border-gray-200 }
 }

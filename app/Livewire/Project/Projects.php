@@ -3,6 +3,7 @@
 namespace App\Livewire\Project;
 
 use App\Livewire\Forms\ProjectForm;
+use App\Models\Project;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -19,6 +20,11 @@ class Projects extends Component
         $this->project_form->save();
         $this->project_form->reset();
         $this->show_create_project = false;
+    }
+
+    public function edit(Project $project) {
+        $this->project_form->set($project);
+        $this->show_create_project = true;
     }
 
     #[Computed]
