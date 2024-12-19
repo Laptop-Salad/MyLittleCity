@@ -38,8 +38,7 @@ class Projects extends Component
             ->paginate();
     }
 
-    public function render()
-    {
+    public function render() {
         return view('livewire.projects');
     }
 }

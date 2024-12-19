@@ -20,9 +20,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        $first_tenant = auth()->user()->tenants()->first(['tenant_id']);
-
-        session(['current_tenant_id' => $first_tenant->tenant_id]);
+        session(['current_tenant_id' => auth()->user()->personalWorkspace->id]);
 
         $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
