@@ -47,11 +47,11 @@ class User extends Authenticatable
         ];
     }
 
-    public function projects(): HasMany {
-        return $this->hasMany(Project::class);
-    }
-
     public function tenants(): BelongsToMany {
         return $this->belongsToMany(Tenant::class, 'tenant_users');
+    }
+
+    public function getCurrentTenantIdAttribute() {
+        return session('current_tenant_id');
     }
 }
