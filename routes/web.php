@@ -7,7 +7,7 @@ require __DIR__.'/auth.php';
 Route::view('/', 'welcome');
 
 Route::middleware('auth')->group(static function () {
-    Route::view('dashboard', 'dashboard')
+    Route::get('dashboard', \App\Livewire\Dashboard::class)
         ->name('dashboard');
 
     Route::view('profile', 'profile')
