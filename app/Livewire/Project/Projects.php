@@ -27,9 +27,6 @@ class Projects extends Component
         $this->show_create_project = true;
     }
 
-    // we want to get the tenant that the user is currently in
-    // first we have to allow for tenant routing?? so like /tenantname/*
-
     #[Computed]
     public function projects() {
         return Project::query()
