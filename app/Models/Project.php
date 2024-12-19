@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
@@ -23,5 +24,9 @@ class Project extends Model
 
     public function people(): HasMany {
         return $this->hasMany(Person::class);
+    }
+
+    public function tenant(): BelongsTo {
+        return $this->belongsTo(Tenant::class);
     }
 }

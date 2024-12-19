@@ -71,7 +71,9 @@ new class extends Component
 
                 <x-dropdown-group label="Team">
                     @foreach(auth()->user()->tenants as $tenant)
-                        <x-dropdown-group.button>
+                        <x-dropdown-group.button
+                            :icon="$tenant->id === auth()->user()->current_tenant_id ? 'fa-solid fa-check': ''"
+                        >
                             {{$tenant->name}}
                         </x-dropdown-group.button>
                     @endforeach

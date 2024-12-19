@@ -29,14 +29,13 @@ class Projects extends Component
 
     #[Computed]
     public function projects() {
-        return auth()->user()
-            ->projects()
+        return Project::query()
+            ->where('tenant_id', auth()->user()->current_tenant_id)
             ->orderBy('name')
             ->paginate();
     }
 
-    public function render()
-    {
+    public function render() {
         return view('livewire.projects');
     }
 }

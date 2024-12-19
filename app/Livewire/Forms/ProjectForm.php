@@ -35,7 +35,7 @@ class ProjectForm extends Form
         $project->fill([
             'name' => $this->name,
             'description' => $this->description,
-            'user_id' => auth()->id()
+            'tenant_id' => auth()->user()->current_tenant_id
         ]);
 
         $project->save();

@@ -36,6 +36,7 @@ new #[Layout('layouts.guest')] class extends Component
         // create tenant
         $tenant = \App\Models\Tenant::create([
             'name' => $this->team_name
+            'personal_workspace' => true,
         ]);
 
         // attach was having a seizure
