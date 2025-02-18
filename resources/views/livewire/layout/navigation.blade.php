@@ -77,6 +77,14 @@ new class extends Component
                             {{$tenant->name}}
                         </x-dropdown-group.button>
                     @endforeach
+
+                    <x-dropdown-group.button
+                        icon="fa-solid fa-plus"
+                        class="border-t"
+                        x-on:click="window.location.href='/teams?quick_create=true'"
+                    >
+                        New Team
+                    </x-dropdown-group.button>
                 </x-dropdown-group>
             </div>
 
